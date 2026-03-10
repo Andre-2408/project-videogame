@@ -121,7 +121,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -193,6 +193,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -200,12 +213,12 @@ TextureImporter:
       name: TileSetForest_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 164
-        width: 35
-        height: 35
+        x: 5
+        y: 165
+        width: 33
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -222,12 +235,12 @@ TextureImporter:
       name: TileSetForest_1
       rect:
         serializedVersion: 2
-        x: 38
-        y: 164
-        width: 34
-        height: 35
+        x: 39
+        y: 165
+        width: 32
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -244,12 +257,12 @@ TextureImporter:
       name: TileSetForest_2
       rect:
         serializedVersion: 2
-        x: 71
-        y: 164
-        width: 35
-        height: 35
+        x: 72
+        y: 165
+        width: 33
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -266,12 +279,12 @@ TextureImporter:
       name: TileSetForest_3
       rect:
         serializedVersion: 2
-        x: 109
-        y: 164
-        width: 36
-        height: 35
+        x: 110
+        y: 165
+        width: 34
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -288,12 +301,12 @@ TextureImporter:
       name: TileSetForest_4
       rect:
         serializedVersion: 2
-        x: 145
-        y: 158
-        width: 36
-        height: 42
+        x: 146
+        y: 159
+        width: 34
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -310,12 +323,12 @@ TextureImporter:
       name: TileSetForest_5
       rect:
         serializedVersion: 2
-        x: 182
-        y: 191
-        width: 14
-        height: 7
+        x: 183
+        y: 192
+        width: 12
+        height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -332,12 +345,12 @@ TextureImporter:
       name: TileSetForest_6
       rect:
         serializedVersion: 2
-        x: 182
-        y: 172
-        width: 14
-        height: 20
+        x: 183
+        y: 173
+        width: 12
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -354,12 +367,12 @@ TextureImporter:
       name: TileSetForest_7
       rect:
         serializedVersion: 2
-        x: 182
-        y: 167
-        width: 14
-        height: 6
+        x: 183
+        y: 168
+        width: 12
+        height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -376,12 +389,12 @@ TextureImporter:
       name: TileSetForest_8
       rect:
         serializedVersion: 2
-        x: 182
-        y: 160
-        width: 14
-        height: 7
+        x: 5
+        y: 132
+        width: 33
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -398,12 +411,12 @@ TextureImporter:
       name: TileSetForest_9
       rect:
         serializedVersion: 2
-        x: 4
-        y: 131
-        width: 35
-        height: 34
+        x: 39
+        y: 132
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -420,12 +433,12 @@ TextureImporter:
       name: TileSetForest_10
       rect:
         serializedVersion: 2
-        x: 38
-        y: 131
-        width: 34
-        height: 34
+        x: 72
+        y: 132
+        width: 33
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -442,12 +455,12 @@ TextureImporter:
       name: TileSetForest_11
       rect:
         serializedVersion: 2
-        x: 71
-        y: 131
-        width: 35
-        height: 34
+        x: 110
+        y: 132
+        width: 34
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -464,12 +477,12 @@ TextureImporter:
       name: TileSetForest_12
       rect:
         serializedVersion: 2
-        x: 109
-        y: 131
-        width: 36
-        height: 34
+        x: 183
+        y: 161
+        width: 12
+        height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -486,12 +499,12 @@ TextureImporter:
       name: TileSetForest_13
       rect:
         serializedVersion: 2
-        x: 146
-        y: 124
-        width: 34
-        height: 34
+        x: 147
+        y: 125
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -508,12 +521,12 @@ TextureImporter:
       name: TileSetForest_14
       rect:
         serializedVersion: 2
-        x: 182
-        y: 141
-        width: 14
-        height: 20
+        x: 183
+        y: 142
+        width: 12
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -530,12 +543,12 @@ TextureImporter:
       name: TileSetForest_15
       rect:
         serializedVersion: 2
-        x: 182
-        y: 136
-        width: 14
-        height: 6
+        x: 183
+        y: 137
+        width: 12
+        height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -552,12 +565,12 @@ TextureImporter:
       name: TileSetForest_16
       rect:
         serializedVersion: 2
-        x: 4
-        y: 98
-        width: 35
-        height: 34
+        x: 5
+        y: 99
+        width: 33
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -574,12 +587,12 @@ TextureImporter:
       name: TileSetForest_17
       rect:
         serializedVersion: 2
-        x: 4
-        y: 63
-        width: 35
-        height: 35
+        x: 39
+        y: 99
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -596,12 +609,12 @@ TextureImporter:
       name: TileSetForest_18
       rect:
         serializedVersion: 2
-        x: 38
-        y: 98
-        width: 34
-        height: 34
+        x: 72
+        y: 99
+        width: 33
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -618,12 +631,12 @@ TextureImporter:
       name: TileSetForest_19
       rect:
         serializedVersion: 2
-        x: 38
-        y: 63
+        x: 110
+        y: 99
         width: 34
-        height: 35
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -640,12 +653,12 @@ TextureImporter:
       name: TileSetForest_20
       rect:
         serializedVersion: 2
-        x: 71
-        y: 98
-        width: 35
-        height: 34
+        x: 5
+        y: 64
+        width: 33
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -662,12 +675,12 @@ TextureImporter:
       name: TileSetForest_21
       rect:
         serializedVersion: 2
-        x: 71
-        y: 63
-        width: 35
-        height: 35
+        x: 39
+        y: 64
+        width: 32
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -684,12 +697,12 @@ TextureImporter:
       name: TileSetForest_22
       rect:
         serializedVersion: 2
-        x: 109
-        y: 98
-        width: 36
-        height: 34
+        x: 72
+        y: 64
+        width: 33
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -706,12 +719,12 @@ TextureImporter:
       name: TileSetForest_23
       rect:
         serializedVersion: 2
-        x: 109
-        y: 63
-        width: 36
-        height: 35
+        x: 110
+        y: 64
+        width: 34
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -728,12 +741,12 @@ TextureImporter:
       name: TileSetForest_24
       rect:
         serializedVersion: 2
-        x: 7
-        y: 35
-        width: 32
-        height: 14
+        x: 8
+        y: 36
+        width: 30
+        height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -750,12 +763,12 @@ TextureImporter:
       name: TileSetForest_25
       rect:
         serializedVersion: 2
-        x: 46
-        y: 35
-        width: 24
-        height: 9
+        x: 47
+        y: 36
+        width: 22
+        height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -772,12 +785,12 @@ TextureImporter:
       name: TileSetForest_26
       rect:
         serializedVersion: 2
-        x: 71
-        y: 35
-        width: 10
-        height: 21
+        x: 72
+        y: 36
+        width: 8
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -794,12 +807,12 @@ TextureImporter:
       name: TileSetForest_27
       rect:
         serializedVersion: 2
-        x: 79
-        y: 35
-        width: 8
-        height: 19
+        x: 80
+        y: 36
+        width: 6
+        height: 17
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -816,12 +829,12 @@ TextureImporter:
       name: TileSetForest_28
       rect:
         serializedVersion: 2
-        x: 83
-        y: 35
-        width: 11
-        height: 21
+        x: 84
+        y: 36
+        width: 9
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -838,7 +851,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: eae8f4d9d1c373c4881e32dfe8de97c0
     internalID: 0
     vertices: []
     indices: 
@@ -846,7 +859,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: False
     nameFileIdTable:
       TileSetForest_0: -4500769804834734537
       TileSetForest_1: 3285242614894866662

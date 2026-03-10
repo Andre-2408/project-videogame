@@ -82,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -154,6 +154,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -161,19 +174,19 @@ TextureImporter:
       name: TileSetBeach_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 164
-        width: 34
-        height: 35
+        x: 7
+        y: 165
+        width: 32
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ef1bb7ce55eab9a70800000000000000
+      spriteID: 9122dc29858df964eb1144e70a062c72
       internalID: 8834846778080342526
       vertices: []
       indices: 
@@ -183,19 +196,19 @@ TextureImporter:
       name: TileSetBeach_1
       rect:
         serializedVersion: 2
-        x: 6
-        y: 131
-        width: 34
-        height: 34
+        x: 40
+        y: 165
+        width: 32
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7a7e818e5c66bb7c0800000000000000
+      spriteID: 60f41ea7418511d4eae741f1265b5b7b
       internalID: -4054534039328462937
       vertices: []
       indices: 
@@ -205,19 +218,19 @@ TextureImporter:
       name: TileSetBeach_2
       rect:
         serializedVersion: 2
-        x: 39
-        y: 164
-        width: 34
-        height: 35
+        x: 73
+        y: 165
+        width: 32
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 66d6e497ae1b013e0800000000000000
+      spriteID: 8f47461d3c4a77d49b0369dbc7dcf44a
       internalID: -2084971006856893082
       vertices: []
       indices: 
@@ -227,19 +240,19 @@ TextureImporter:
       name: TileSetBeach_3
       rect:
         serializedVersion: 2
-        x: 39
-        y: 131
-        width: 34
-        height: 34
+        x: 110
+        y: 165
+        width: 32
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: df1fb20fa28efb5e0800000000000000
+      spriteID: 4da65f8bbf1dd8349856fc24cae42ddd
       internalID: -1891538047356636675
       vertices: []
       indices: 
@@ -249,19 +262,19 @@ TextureImporter:
       name: TileSetBeach_4
       rect:
         serializedVersion: 2
-        x: 72
-        y: 164
-        width: 34
-        height: 35
+        x: 7
+        y: 132
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 839f5565f3de26e00800000000000000
+      spriteID: cb98102ee59630847904cc7d3a990f98
       internalID: 1036651720535832888
       vertices: []
       indices: 
@@ -271,19 +284,19 @@ TextureImporter:
       name: TileSetBeach_5
       rect:
         serializedVersion: 2
-        x: 72
-        y: 131
-        width: 34
-        height: 34
+        x: 40
+        y: 132
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7056994dfc8c97610800000000000000
+      spriteID: c0af7cd0de9a8974ebee5e85202437cc
       internalID: 1619546335967012103
       vertices: []
       indices: 
@@ -293,19 +306,19 @@ TextureImporter:
       name: TileSetBeach_6
       rect:
         serializedVersion: 2
-        x: 109
-        y: 164
-        width: 34
-        height: 35
+        x: 73
+        y: 132
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5ef78765a789ef8d0800000000000000
+      spriteID: 0165232ad6732f34a9bd50c0e2996f38
       internalID: -2810641466228441115
       vertices: []
       indices: 
@@ -315,19 +328,19 @@ TextureImporter:
       name: TileSetBeach_7
       rect:
         serializedVersion: 2
-        x: 109
-        y: 131
-        width: 34
-        height: 34
+        x: 110
+        y: 132
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1a2071224c5a20670800000000000000
+      spriteID: 37d194f21e2064b44beb98e2de9734bf
       internalID: 8503541308233024161
       vertices: []
       indices: 
@@ -337,19 +350,19 @@ TextureImporter:
       name: TileSetBeach_8
       rect:
         serializedVersion: 2
-        x: 6
-        y: 100
-        width: 34
+        x: 7
+        y: 99
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ec8398d097569cd50800000000000000
+      spriteID: a76183659cc2f274a953a5b197b974cf
       internalID: 6758044286438684878
       vertices: []
       indices: 
@@ -359,19 +372,19 @@ TextureImporter:
       name: TileSetBeach_9
       rect:
         serializedVersion: 2
-        x: 39
-        y: 100
-        width: 34
+        x: 40
+        y: 99
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3a1ce047a67544cd0800000000000000
+      spriteID: 7b65871c8540e794ab045ba7f5f2c7c9
       internalID: -2574836972223807069
       vertices: []
       indices: 
@@ -381,19 +394,19 @@ TextureImporter:
       name: TileSetBeach_10
       rect:
         serializedVersion: 2
-        x: 72
-        y: 100
-        width: 34
+        x: 73
+        y: 99
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a1dbfd53b26c3ec50800000000000000
+      spriteID: ccdbb6f8763bf14479b8613bbf467b07
       internalID: 6693411360092437786
       vertices: []
       indices: 
@@ -403,19 +416,19 @@ TextureImporter:
       name: TileSetBeach_11
       rect:
         serializedVersion: 2
-        x: 109
-        y: 100
-        width: 34
+        x: 110
+        y: 99
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 06423641767e04d10800000000000000
+      spriteID: fee3006fb0b861c41897e88d3704196a
       internalID: 2107939055519081568
       vertices: []
       indices: 
@@ -425,19 +438,19 @@ TextureImporter:
       name: TileSetBeach_12
       rect:
         serializedVersion: 2
-        x: 6
+        x: 7
         y: 65
-        width: 34
-        height: 33
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bcb511a059050b420800000000000000
+      spriteID: e9ed8c733364def45ad4c1f4f11a8f94
       internalID: 2643701582315740107
       vertices: []
       indices: 
@@ -447,19 +460,19 @@ TextureImporter:
       name: TileSetBeach_13
       rect:
         serializedVersion: 2
-        x: 39
+        x: 40
         y: 65
-        width: 34
-        height: 33
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 877b76b00ac745ae0800000000000000
+      spriteID: 4ccb582b17e3d434a8f05e0fca3d4228
       internalID: -1561486143962761352
       vertices: []
       indices: 
@@ -469,19 +482,19 @@ TextureImporter:
       name: TileSetBeach_14
       rect:
         serializedVersion: 2
-        x: 72
+        x: 73
         y: 65
-        width: 34
-        height: 33
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 03f282799b7646790800000000000000
+      spriteID: 4bf3a599e1ad9f343bf5b6b373aa5984
       internalID: -7537785829508763856
       vertices: []
       indices: 
@@ -491,19 +504,19 @@ TextureImporter:
       name: TileSetBeach_15
       rect:
         serializedVersion: 2
-        x: 109
+        x: 110
         y: 65
-        width: 34
-        height: 33
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8dd54981fbe72a8f0800000000000000
+      spriteID: cda53c63d2f3cca4ca796ae0f6f841ba
       internalID: -530722446860067368
       vertices: []
       indices: 
@@ -513,7 +526,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6ad37534f2ebf074ebb8b779d951005c
     internalID: 0
     vertices: []
     indices: 
@@ -521,7 +534,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: False
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       TileSetBeach_0: 8834846778080342526
       TileSetBeach_1: -4054534039328462937

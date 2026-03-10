@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"D:/GitHub/project-videogame/Project-Videogame/Assets/Scripts/Player\")",
+      "Bash(mkdir -p \"D:/GitHub/project-videogame/Project-Videogame/Assets/Scripts/Enemy\")",
+      "Bash(for f in \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Legs\\\\legs_idle.anim.meta\" \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Legs\\\\legs_walk.anim.meta\" \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Legs\\\\legs_jump.anim.meta\" \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Torso\\\\Weapon\\\\torso_idle_gun.anim.meta\" \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Torso\\\\Weapon\\\\torso_walk_gun.anim.meta\" \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Torso\\\\Weapon\\\\torso_attack_gun.anim.meta\" \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Torso\\\\Knife\\\\torso_idle_knife.anim.meta\" \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Torso\\\\Knife\\\\torso_walk_knife.anim.meta\" \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Torso\\\\Knife\\\\torso_attack_knife.anim.meta\")",
+      "Bash(do echo \"=== $f ===\")",
+      "Read(//d/GitHub/project-videogame/Project-Videogame/**)",
+      "Bash(done)",
+      "Bash(for f in \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Legs\\\\monkeyStaticLegs.png.meta\" \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Torso\\\\Weapon\\\\monkeyStaticWeapon.png.meta\")",
+      "Bash(for f in \"monkeyWalkWeapon.png.meta\" \"monkeyAtackWeapon.png.meta\" \"monkeyStaticKnife.png.meta\" \"monkeyWalkKnife.png.meta\" \"monkeyAtackKnife.png.meta\")",
+      "Read(//d/GitHub/project-videogame/Project-Videogame/Assets/Scenes/AssetsYoBanana/AssetsYoBanana/Player/Torso/**)"
+    ]
+  }
+}
