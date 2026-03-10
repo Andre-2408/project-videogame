@@ -1,0 +1,468 @@
+fileFormatVersion: 2
+guid: 40b4d2bac9cde9f4abd9bf0535c8fe48
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7577147415576114075
+    second: monkeyWalkKnife_0
+  - first:
+      213: -1130869756352340137
+    second: monkeyWalkKnife_1
+  - first:
+      213: -7331624703537456935
+    second: monkeyWalkKnife_2
+  - first:
+      213: 4414476755731850845
+    second: monkeyWalkKnife_3
+  - first:
+      213: -4600838591851684105
+    second: monkeyWalkKnife_4
+  - first:
+      213: 9006767885920952732
+    second: monkeyWalkKnife_5
+  - first:
+      213: -7335285031122801220
+    second: monkeyWalkKnife_6
+  - first:
+      213: -4860026041280183444
+    second: monkeyWalkKnife_7
+  - first:
+      213: -5149071375610125685
+    second: monkeyWalkKnife_8
+  - first:
+      213: -8508479073205366805
+    second: monkeyWalkKnife_9
+  - first:
+      213: -5106138340014690896
+    second: monkeyWalkKnife_10
+  - first:
+      213: -8911193387096786615
+    second: monkeyWalkKnife_11
+  - first:
+      213: 1141337573218493636
+    second: monkeyWalkKnife_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: monkeyWalkKnife_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 781
+        width: 33
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b93fe24dd6f672960800000000000000
+      internalID: 7577147415576114075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 717
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75fd26db2f75e40f0800000000000000
+      internalID: -1130869756352340137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 653
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d8db2f3d26d04a90800000000000000
+      internalID: -7331624703537456935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_3
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 589
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d56ad9e683f534d30800000000000000
+      internalID: 4414476755731850845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_4
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 525
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fe95cf4da98620c0800000000000000
+      internalID: -4600838591851684105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_5
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 461
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c91e6be1ca77efc70800000000000000
+      internalID: 9006767885920952732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_6
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 397
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbd6fa1d025d33a90800000000000000
+      internalID: -7335285031122801220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_7
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 333
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c63c852a018bd8cb0800000000000000
+      internalID: -4860026041280183444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_8
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 269
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8260a56dd2da88b0800000000000000
+      internalID: -5149071375610125685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_9
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 205
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: befcfbedc5fcbe980800000000000000
+      internalID: -8508479073205366805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_10
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 141
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bdeb65bb3a5329b0800000000000000
+      internalID: -5106138340014690896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_11
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 77
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9493945f3d4155480800000000000000
+      internalID: -8911193387096786615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkKnife_12
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 13
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c4ae7cc978d6df00800000000000000
+      internalID: 1141337573218493636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      monkeyWalkKnife_0: 7577147415576114075
+      monkeyWalkKnife_1: -1130869756352340137
+      monkeyWalkKnife_10: -5106138340014690896
+      monkeyWalkKnife_11: -8911193387096786615
+      monkeyWalkKnife_12: 1141337573218493636
+      monkeyWalkKnife_2: -7331624703537456935
+      monkeyWalkKnife_3: 4414476755731850845
+      monkeyWalkKnife_4: -4600838591851684105
+      monkeyWalkKnife_5: 9006767885920952732
+      monkeyWalkKnife_6: -7335285031122801220
+      monkeyWalkKnife_7: -4860026041280183444
+      monkeyWalkKnife_8: -5149071375610125685
+      monkeyWalkKnife_9: -8508479073205366805
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

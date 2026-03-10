@@ -1,0 +1,468 @@
+fileFormatVersion: 2
+guid: e98dd71561b78594b848064ec744906d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5774806836506112760
+    second: monkeyWalkWeapon_0
+  - first:
+      213: -6581238355158276600
+    second: monkeyWalkWeapon_1
+  - first:
+      213: -9179202787968309458
+    second: monkeyWalkWeapon_2
+  - first:
+      213: 5988307118317927131
+    second: monkeyWalkWeapon_3
+  - first:
+      213: 8704573345022240621
+    second: monkeyWalkWeapon_4
+  - first:
+      213: -6613710517465397141
+    second: monkeyWalkWeapon_5
+  - first:
+      213: -4971217237584071781
+    second: monkeyWalkWeapon_6
+  - first:
+      213: -2814593398397580538
+    second: monkeyWalkWeapon_7
+  - first:
+      213: -8204026808953800130
+    second: monkeyWalkWeapon_8
+  - first:
+      213: -185231611828410020
+    second: monkeyWalkWeapon_9
+  - first:
+      213: -3075662237641807049
+    second: monkeyWalkWeapon_10
+  - first:
+      213: -714334385940120344
+    second: monkeyWalkWeapon_11
+  - first:
+      213: -1315008621288972693
+    second: monkeyWalkWeapon_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 781
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f2b178b83c342050800000000000000
+      internalID: 5774806836506112760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 717
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8066d9ab59ebaa4a0800000000000000
+      internalID: -6581238355158276600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 653
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e27afd5a2bbec9080800000000000000
+      internalID: -9179202787968309458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_3
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 589
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bda7841c89dba1350800000000000000
+      internalID: 5988307118317927131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_4
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 525
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d676267a65bdcc870800000000000000
+      internalID: 8704573345022240621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_5
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 461
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b68c53743516734a0800000000000000
+      internalID: -6613710517465397141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_6
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 397
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b93b084d240b20bb0800000000000000
+      internalID: -4971217237584071781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_7
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 333
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60b4a5d673e80f8d0800000000000000
+      internalID: -2814593398397580538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_8
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 269
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3af6848511752e80800000000000000
+      internalID: -8204026808953800130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_9
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 205
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c596bc794dced6df0800000000000000
+      internalID: -185231611828410020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_10
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 141
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73be64c8d7d0155d0800000000000000
+      internalID: -3075662237641807049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_11
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 77
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ec313329ac2616f0800000000000000
+      internalID: -714334385940120344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkeyWalkWeapon_12
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 13
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6e9e7b40a620cde0800000000000000
+      internalID: -1315008621288972693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      monkeyWalkWeapon_0: 5774806836506112760
+      monkeyWalkWeapon_1: -6581238355158276600
+      monkeyWalkWeapon_10: -3075662237641807049
+      monkeyWalkWeapon_11: -714334385940120344
+      monkeyWalkWeapon_12: -1315008621288972693
+      monkeyWalkWeapon_2: -9179202787968309458
+      monkeyWalkWeapon_3: 5988307118317927131
+      monkeyWalkWeapon_4: 8704573345022240621
+      monkeyWalkWeapon_5: -6613710517465397141
+      monkeyWalkWeapon_6: -4971217237584071781
+      monkeyWalkWeapon_7: -2814593398397580538
+      monkeyWalkWeapon_8: -8204026808953800130
+      monkeyWalkWeapon_9: -185231611828410020
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
