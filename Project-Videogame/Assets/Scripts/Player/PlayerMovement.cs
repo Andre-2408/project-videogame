@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        _rb   = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<PlayerAnimationController>();
     }
 
@@ -49,20 +49,20 @@ public class PlayerMovement : MonoBehaviour
         if (!_inputReady) return;
 
         var keyboard = Keyboard.current;
-        var mouse    = Mouse.current;
+        var mouse = Mouse.current;
 
         if (keyboard == null) return;
 
         // --- Movimiento horizontal ---
         _moveX = 0f;
-        if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed)  _moveX = -1f;
-        if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) _moveX =  1f;
+        if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed) _moveX = -1f;
+        if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) _moveX = 1f;
 
         _anim.SetWalking(_moveX != 0);
 
         // --- Flip directo en SpriteRenderers ---
         if (_moveX > 0 && !_facingRight) SetFacing(true);
-        if (_moveX < 0 &&  _facingRight) SetFacing(false);
+        if (_moveX < 0 && _facingRight) SetFacing(false);
 
         // --- Deteccion de suelo ---
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _facingRight = right;
         bool flip = !right;
-        if (legsRenderer  != null) legsRenderer.flipX  = flip;
+        if (legsRenderer != null) legsRenderer.flipX = flip;
         if (torsoRenderer != null) torsoRenderer.flipX = flip;
     }
 }

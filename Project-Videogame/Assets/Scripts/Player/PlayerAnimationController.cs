@@ -10,10 +10,10 @@ public class PlayerAnimationController : MonoBehaviour
     private Animator _animator;
 
     // --- Hash de parametros (mas eficiente que strings) ---
-    private static readonly int IsWalking   = Animator.StringToHash("isWalking");
-    private static readonly int IsJumping   = Animator.StringToHash("isJumping");
+    private static readonly int IsWalking = Animator.StringToHash("isWalking");
+    private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private static readonly int IsAttacking = Animator.StringToHash("isAttacking");
-    private static readonly int WeaponType  = Animator.StringToHash("weaponType");
+    private static readonly int WeaponType = Animator.StringToHash("weaponType");
 
     // --- Estado del arma ---
     public enum Weapon { Gun = 0, Knife = 1 }

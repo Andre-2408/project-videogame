@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
 
     [Header("Probabilidad de que el enemigo tenga cuchillo (0-1)")]
-    [SerializeField] [Range(0f, 1f)] private float knifeProbability = 0.5f;
+    [SerializeField][Range(0f, 1f)] private float knifeProbability = 0.5f;
 
     public GameObject SpawnEnemy()
     {

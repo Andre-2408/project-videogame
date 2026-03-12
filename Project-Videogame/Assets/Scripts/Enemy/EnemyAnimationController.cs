@@ -14,11 +14,11 @@ public class EnemyAnimationController : MonoBehaviour
 
     private Animator _animator;
 
-    private static readonly int IsWalking   = Animator.StringToHash("isWalking");
-    private static readonly int IsJumping   = Animator.StringToHash("isJumping");
+    private static readonly int IsWalking = Animator.StringToHash("isWalking");
+    private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private static readonly int IsAttacking = Animator.StringToHash("isAttacking");
-    private static readonly int WeaponType  = Animator.StringToHash("weaponType");
-    private static readonly int IsDead      = Animator.StringToHash("isDead");
+    private static readonly int WeaponType = Animator.StringToHash("weaponType");
+    private static readonly int IsDead = Animator.StringToHash("isDead");
 
     void Awake()
     {
