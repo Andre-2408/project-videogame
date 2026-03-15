@@ -3,7 +3,7 @@ using UnityEngine;
 public class ItemCollector : MonoBehaviour
 {
     private AudioSource audioSource;
-
+    public int points = 10;
     void Start()
     {
         // Obtenemos el componente AudioSource que ya está en el prefab
@@ -27,6 +27,8 @@ public class ItemCollector : MonoBehaviour
 
             // Activa el hijo (la animación de recolección)
             transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+
+            FindObjectOfType<ScoreManager>().AddPoints(points);
 
             // Destruye el objeto después de un tiempo (ajusta según la duración de tu animación)
             Destroy(gameObject, 0.3f);

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DemageObject : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class DemageObject : MonoBehaviour
         {
             Debug.Log("Player Demaged");
             Destroy(collision.gameObject);
+            string currentScene = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentScene);
         }
     }
 }
