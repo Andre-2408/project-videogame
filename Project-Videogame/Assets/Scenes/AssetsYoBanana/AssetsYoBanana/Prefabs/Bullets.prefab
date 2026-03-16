@@ -125,9 +125,9 @@ GameObject:
   - component: {fileID: 7635834587530963083}
   - component: {fileID: 2934635955152765163}
   - component: {fileID: 405854662172158565}
-  - component: {fileID: 6824626491924094343}
   - component: {fileID: -1113970798906910476}
   - component: {fileID: 8962602068391331824}
+  - component: {fileID: -1131009615166304113}
   m_Layer: 0
   m_Name: Bullets
   m_TagString: Untagged
@@ -232,18 +232,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6824626491924094343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8521088122259969058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e17dfcd24acf6e4c82554973adb9513, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemCollector
 --- !u!70 &-1113970798906910476
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -378,3 +366,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1131009615166304113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521088122259969058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9174ae4ccb58792469b9ab7683c6ede8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletPickup
+  ammoAmount: 8

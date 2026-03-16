@@ -6,7 +6,7 @@ public class ItemCollector : MonoBehaviour
     public int points = 10;
     void Start()
     {
-        // Obtenemos el componente AudioSource que ya está en el prefab
+        // Obtenemos el componente AudioSource que ya estï¿½ en el prefab
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -14,7 +14,7 @@ public class ItemCollector : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("¡Banana recogida!");
+            Debug.Log("ï¿½Banana recogida!");
 
             // Reproducir el sonido
             if (audioSource != null)
@@ -25,12 +25,12 @@ public class ItemCollector : MonoBehaviour
             // Oculta el sprite principal
             GetComponent<SpriteRenderer>().enabled = false;
 
-            // Activa el hijo (la animación de recolección)
+            // Activa el hijo (la animaciï¿½n de recolecciï¿½n)
             transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
 
-            FindObjectOfType<ScoreManager>().AddPoints(points);
+            FindFirstObjectByType<ScoreManager>().AddPoints(points);
 
-            // Destruye el objeto después de un tiempo (ajusta según la duración de tu animación)
+            // Destruye el objeto despuï¿½s de un tiempo (ajusta segï¿½n la duraciï¿½n de tu animaciï¿½n)
             Destroy(gameObject, 0.3f);
         }
     }

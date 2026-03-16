@@ -1,16 +1,15 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class DemageObject : MonoBehaviour
 {
+    [SerializeField] private int damage = 1;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Player"))
-        {
-            Debug.Log("Player Demaged");
-            Destroy(collision.gameObject);
-            string currentScene = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentScene);
-        }
+        if (!collision.transform.CompareTag("Player")) return;
+
+        var health = collision.gameObject.GetComponent<PlayerHealth>();
+        if (health != null)
+            health.TakeDamage(damage);
     }
 }
