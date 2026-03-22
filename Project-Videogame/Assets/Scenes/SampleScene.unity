@@ -2392,7 +2392,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 0.75
+  orthographic size: 1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2436,7 +2436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowCamera
   player: {fileID: 1799028169}
-  smoothSpeed: 10
+  smoothSpeed: 3
   offset: {x: 0.5, y: 0}
 --- !u!1001 &591247200
 PrefabInstance:
@@ -8459,6 +8459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KillZone
   spawnPoint: {fileID: 1533094262}
   damage: 1
+  sceneToLoad: Menu
 --- !u!1 &1589218882
 GameObject:
   m_ObjectHideFlags: 0
@@ -9785,7 +9786,7 @@ Transform:
   m_GameObject: {fileID: 1899305364}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.307, y: -0.32, z: 0}
+  m_LocalPosition: {x: -0.25, y: -0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
