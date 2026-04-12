@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: a37460535ab6f38498c3fac34b256f7b
+guid: 6f3937547ad92c04cbc830ef3dec55b3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 794847241788539936
-    second: EnemyWalkSoldierWeaponAtack_0
-  - first:
-      213: 209204211157959570
-    second: EnemyWalkSoldierWeaponAtack_1
-  - first:
-      213: 6543109103289499636
-    second: EnemyWalkSoldierWeaponAtack_2
-  - first:
-      213: -5983419554366559913
-    second: EnemyWalkSoldierWeaponAtack_3
+      213: -2346302928887187388
+    second: bullet_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -135,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemyWalkSoldierWeaponAtack_0
+      name: bullet_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 19
-        width: 47
-        height: 43
+        x: 0
+        y: 0
+        width: 8
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0244189ea5dd70b00800000000000000
-      internalID: 794847241788539936
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyWalkSoldierWeaponAtack_1
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 19
-        width: 47
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 29306932f1e37e200800000000000000
-      internalID: 209204211157959570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyWalkSoldierWeaponAtack_2
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 19
-        width: 49
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4fff134001bcdca50800000000000000
-      internalID: 6543109103289499636
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyWalkSoldierWeaponAtack_3
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 19
-        width: 48
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 759ead7ed9f96fca0800000000000000
-      internalID: -5983419554366559913
+      spriteID: 448783cdae1407fd0800000000000000
+      internalID: -2346302928887187388
       vertices: []
       indices: 
       edges: []
@@ -236,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      EnemyWalkSoldierWeaponAtack_0: 794847241788539936
-      EnemyWalkSoldierWeaponAtack_1: 209204211157959570
-      EnemyWalkSoldierWeaponAtack_2: 6543109103289499636
-      EnemyWalkSoldierWeaponAtack_3: -5983419554366559913
+      bullet_0: -2346302928887187388
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

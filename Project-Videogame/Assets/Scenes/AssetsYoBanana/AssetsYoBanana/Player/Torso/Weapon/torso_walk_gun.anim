@@ -30,21 +30,21 @@ AnimationClip:
       value: {fileID: 5988307118317927131, guid: e98dd71561b78594b848064ec744906d, type: 3}
     - time: 0.33333334
       value: {fileID: 8704573345022240621, guid: e98dd71561b78594b848064ec744906d, type: 3}
-    - time: 0.41666667
+    - time: 0.41666666
       value: {fileID: -6613710517465397141, guid: e98dd71561b78594b848064ec744906d, type: 3}
     - time: 0.5
       value: {fileID: -4971217237584071781, guid: e98dd71561b78594b848064ec744906d, type: 3}
-    - time: 0.58333334
+    - time: 0.5833333
       value: {fileID: -2814593398397580538, guid: e98dd71561b78594b848064ec744906d, type: 3}
-    - time: 0.66666667
+    - time: 0.6666667
       value: {fileID: -8204026808953800130, guid: e98dd71561b78594b848064ec744906d, type: 3}
     - time: 0.75
       value: {fileID: -185231611828410020, guid: e98dd71561b78594b848064ec744906d, type: 3}
-    - time: 0.83333334
+    - time: 0.8333333
       value: {fileID: -3075662237641807049, guid: e98dd71561b78594b848064ec744906d, type: 3}
-    - time: 0.91666667
+    - time: 0.9166667
       value: {fileID: -714334385940120344, guid: e98dd71561b78594b848064ec744906d, type: 3}
-    - time: 1.0
+    - time: 1
       value: {fileID: -1315008621288972693, guid: e98dd71561b78594b848064ec744906d, type: 3}
     attribute: m_Sprite
     path: monkeyStaticWeapon_0
@@ -86,7 +86,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.08333334
+    m_StopTime: 1.0833334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

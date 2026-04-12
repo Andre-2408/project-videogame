@@ -27,6 +27,8 @@ public class BulletPickup : MonoBehaviour
             _audio.Play();
 
         GetComponent<SpriteRenderer>().enabled = false;
+        // Activa el hijo (la animaci?n de recolecci?n)
+        transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         Destroy(gameObject, _audio != null ? _audio.clip.length : 0f);
     }
 }

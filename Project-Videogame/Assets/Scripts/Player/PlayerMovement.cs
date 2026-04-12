@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerAnimationController))]
 [RequireComponent(typeof(PlayerAmmo))]
+[RequireComponent(typeof(PlayerShoot))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movimiento")]
@@ -18,20 +19,21 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private PlayerAnimationController _anim;
     private PlayerAmmo _ammo;
+    private PlayerShoot _shoot;
 
     private bool _isGrounded;
     private bool _facingRight = true;
     private float _moveX;
 
-    // Evita que el primer click al enfocar la Game View dispare el ataque
     private bool _inputReady = false;
     private const float InputDelay = 0.1f;
 
     void Awake()
     {
-        _rb   = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<PlayerAnimationController>();
         _ammo = GetComponent<PlayerAmmo>();
+        _shoot = GetComponent<PlayerShoot>();
     }
 
     void Start()
@@ -46,20 +48,20 @@ public class PlayerMovement : MonoBehaviour
         if (!_inputReady) return;
 
         var keyboard = Keyboard.current;
-        var mouse    = Mouse.current;
+        var mouse = Mouse.current;
 
         if (keyboard == null) return;
 
         // --- Movimiento horizontal ---
         _moveX = 0f;
-        if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed)  _moveX = -1f;
-        if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) _moveX =  1f;
+        if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed) _moveX = -1f;
+        if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) _moveX = 1f;
 
         _anim.SetWalking(_moveX != 0);
 
-        // --- Flip por escala (voltea todo el personaje, sin Inspector) ---
+        // --- Flip ---
         if (_moveX > 0 && !_facingRight) SetFacing(true);
-        if (_moveX < 0 &&  _facingRight) SetFacing(false);
+        if (_moveX < 0 && _facingRight) SetFacing(false);
 
         // --- Deteccion de suelo ---
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -72,16 +74,28 @@ public class PlayerMovement : MonoBehaviour
             _anim.PlayJumpSound();
         }
 
-        // --- Ataque ---
+        // --- Ataque / Disparo ---
         if (mouse != null && mouse.leftButton.wasPressedThisFrame)
-            _anim.TriggerAttack();
+        {
+            bool isReloading = _ammo != null && _ammo.IsReloading;
+            bool hasAmmo = _ammo != null && _ammo.Magazine > 0;
 
-        // --- Recarga (R) - solo pistola, no recargar si ya está llena o recargando ---
+            if (!isReloading)
+            {
+                _anim.TriggerAttack(); // esto ya maneja el sonido de vacio
+
+                // Solo instancia la bala si tiene balas
+                if (_anim.CurrentWeapon == PlayerAnimationController.Weapon.Gun && hasAmmo)
+                    _shoot.Shoot();
+            }
+        }
+
+        // --- Recarga (R) ---
         if (keyboard.rKey.wasPressedThisFrame &&
             _anim.CurrentWeapon == PlayerAnimationController.Weapon.Gun &&
             _ammo != null)
         {
-            bool started = _ammo.TryReload(() => { /* recarga completada */ });
+            bool started = _ammo.TryReload(() => { });
             if (started) _anim.PlayReloadSound();
         }
 
@@ -104,5 +118,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _facingRight = right;
         _anim.SetFacingRight(right);
+        _shoot.SetFacing(right); // sincroniza dirección de disparo
     }
 }
