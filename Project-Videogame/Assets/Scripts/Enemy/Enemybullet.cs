@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
-    public float speed = 12f;
+    public float speed = 10f;
     public float lifetime = 3f;
 
     private Rigidbody2D _rb;
@@ -23,16 +23,19 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        EnemyHealth enemy = other.GetComponent<EnemyHealth>();
-        if (enemy != null)
+        // Daña al player
+        if (other.CompareTag("Player"))
         {
-            // Pasa la posición X de la bala como origen del golpe
-            enemy.TakeDamage(transform.position.x);
+            PlayerHealth health = other.GetComponent<PlayerHealth>();
+            if (health != null)
+                health.TakeDamage(1);
+
             Destroy(gameObject);
             return;
         }
 
-        if (!other.CompareTag("Player"))
+        // Se destruye con cualquier otra cosa excepto el enemigo
+        if (!other.CompareTag("Enemy"))
             Destroy(gameObject);
     }
 }

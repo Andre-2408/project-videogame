@@ -23,19 +23,32 @@ public class EnemyAI : MonoBehaviour
     public float stuckCheckInterval = 0.4f;
     public float stuckThreshold = 0.05f;
 
+    [Header("Disparo")]
+    [Header("Sonidos")]
+    public AudioClip jumpSound;
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float shootCooldown = 1.5f;
+    public AudioClip shootSound;
+
     private Rigidbody2D rb;
+    private AudioSource _audio;
     private Transform _visuals;
     private bool _facingRight = true;
     private bool _isGrounded;
     private float _jumpTimer;
     private float _lastPositionX;
     private float _stuckTimer;
+    private float _shootTimer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         if (animator == null)
             animator = GetComponent<Animator>();
+
+        _audio = GetComponent<AudioSource>();
+        if (_audio == null) _audio = gameObject.AddComponent<AudioSource>();
 
         _lastPositionX = transform.position.x;
         BuildVisualContainer();
@@ -45,7 +58,6 @@ public class EnemyAI : MonoBehaviour
     {
         // --- Suelo ---
         _isGrounded = Mathf.Abs(rb.linearVelocity.y) < 0.05f;
-        animator.SetBool("isJumping", !_isGrounded);
 
         // --- Movimiento horizontal ---
         float distance = Mathf.Abs(player.position.x - transform.position.x);
@@ -55,11 +67,20 @@ public class EnemyAI : MonoBehaviour
             float direction = Mathf.Sign(player.position.x - transform.position.x);
             rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
             animator.SetBool("isWalking", true);
+            animator.SetBool("isShooting", false);
         }
         else
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             animator.SetBool("isWalking", false);
+
+            // --- Disparo al llegar a stopDistance ---
+            _shootTimer -= Time.fixedDeltaTime;
+            if (_shootTimer <= 0f)
+            {
+                Shoot();
+                _shootTimer = shootCooldown;
+            }
         }
 
         // --- Detección de atasco y salto ---
@@ -75,6 +96,9 @@ public class EnemyAI : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 _jumpTimer = jumpCooldown;
+
+                if (_audio != null && jumpSound != null)
+                    _audio.PlayOneShot(jumpSound);
             }
 
             _lastPositionX = transform.position.x;
@@ -82,6 +106,22 @@ public class EnemyAI : MonoBehaviour
         }
 
         Flip();
+    }
+
+    void Shoot()
+    {
+        if (bulletPrefab == null || firePoint == null) return;
+
+        animator.SetBool("isShooting", true);
+
+        if (_audio != null && shootSound != null)
+            _audio.PlayOneShot(shootSound);
+
+        float direction = Mathf.Sign(player.position.x - transform.position.x);
+        GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        EnemyBullet bullet = b.GetComponent<EnemyBullet>();
+        if (bullet != null)
+            bullet.SetDirection(direction);
     }
 
     void Flip()

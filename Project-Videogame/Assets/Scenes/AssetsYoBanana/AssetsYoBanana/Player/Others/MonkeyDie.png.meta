@@ -127,6 +127,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -134,12 +147,12 @@ TextureImporter:
       name: MonkeyDie_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 65
-        width: 34
-        height: 51
+        x: 19
+        y: 66
+        width: 32
+        height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -156,12 +169,12 @@ TextureImporter:
       name: MonkeyDie_1
       rect:
         serializedVersion: 2
-        x: 82
-        y: 65
-        width: 36
-        height: 51
+        x: 83
+        y: 66
+        width: 34
+        height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -178,12 +191,12 @@ TextureImporter:
       name: MonkeyDie_2
       rect:
         serializedVersion: 2
-        x: 143
-        y: 64
-        width: 31
-        height: 47
+        x: 144
+        y: 65
+        width: 29
+        height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -200,12 +213,12 @@ TextureImporter:
       name: MonkeyDie_3
       rect:
         serializedVersion: 2
-        x: 207
-        y: 64
-        width: 31
-        height: 46
+        x: 208
+        y: 65
+        width: 29
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -222,12 +235,12 @@ TextureImporter:
       name: MonkeyDie_4
       rect:
         serializedVersion: 2
-        x: 271
-        y: 63
-        width: 42
-        height: 47
+        x: 272
+        y: 64
+        width: 40
+        height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -244,12 +257,12 @@ TextureImporter:
       name: MonkeyDie_5
       rect:
         serializedVersion: 2
-        x: 2
+        x: 3
         y: 0
-        width: 62
-        height: 13
+        width: 60
+        height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -266,12 +279,12 @@ TextureImporter:
       name: MonkeyDie_6
       rect:
         serializedVersion: 2
-        x: 66
+        x: 67
         y: 0
-        width: 62
-        height: 14
+        width: 60
+        height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -288,7 +301,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8aaaa6f82375b89449a461a0880c8cc8
     internalID: 0
     vertices: []
     indices: 
@@ -296,7 +309,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       MonkeyDie_0: 7830793956952692936
       MonkeyDie_1: -2699486128787904816

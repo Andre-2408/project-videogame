@@ -27,9 +27,7 @@ public class EnemyAnimationController : MonoBehaviour
 
     void Start()
     {
-        // Aplica el tipo de arma al nacer -- sin ninguna transicion visible
-        // porque aun no ha empezado a moverse
-        _animator.SetInteger(WeaponType, (int)weaponType);
+
     }
 
     // ----------------------------------------------------------------

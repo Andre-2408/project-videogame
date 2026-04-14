@@ -10,24 +10,30 @@ public class PlayerHealth : MonoBehaviour
     private int _currentHealth;
 
     [Header("UI")]
-    [SerializeField] private Image healthBarFill;   // Image tipo Filled, Fill Method = Horizontal
+    [SerializeField] private Image healthBarFill;
 
-    // Referencia al audio del player para el sonido de daÃ±o
-    private PlayerAnimationController _anim;
-
-    [Header("Tiempo antes de recargar escena al morir")]
+    [Header("Muerte")]
     [SerializeField] private float deathDelay = 0.5f;
+    [SerializeField] private string deathScene;
+    [SerializeField] private GameObject deathAnimation; // arrastra MonkeyDie_0 aquí
+
+    private PlayerAnimationController _anim;
+    private HitEffect _hitEffect;
 
     void Awake()
     {
         _anim = GetComponent<PlayerAnimationController>();
+        _hitEffect = GetComponent<HitEffect>();
         _currentHealth = maxHealth;
         UpdateBar();
+
+        if (deathAnimation != null)
+            deathAnimation.SetActive(false);
     }
 
     public bool IsAlive => _currentHealth > 0;
 
-    public void TakeDamage(int amount = 1)
+    public void TakeDamage(int amount = 1, float attackerX = 0f)
     {
         if (_currentHealth <= 0) return;
 
@@ -35,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
         _currentHealth = Mathf.Max(0, _currentHealth);
 
         if (_anim != null) _anim.PlayDamageSound();
+        if (_hitEffect != null) _hitEffect.TakeHit(attackerX - transform.position.x);
 
         UpdateBar();
 
@@ -44,10 +51,35 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator Die()
     {
-        // Desactivar visualmente para que el sonido suene primero
-        gameObject.SetActive(false);
+        // Bloquear movimiento y input
+        var rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Static; // congela el rigidbody
+        }
+
+        var movement = GetComponent<PlayerMovement>();
+        if (movement != null)
+            movement.enabled = false; // desactiva el script de movimiento
+
+        // Ocultar sprites normales del player
+        foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
+            sr.enabled = false;
+
+        // Activar animación de muerte en la misma posición
+        if (deathAnimation != null)
+        {
+            deathAnimation.transform.position = transform.position;
+            deathAnimation.SetActive(true);
+        }
+
         yield return new WaitForSeconds(deathDelay);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        if (!string.IsNullOrEmpty(deathScene))
+            SceneManager.LoadScene(deathScene);
+        else
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void UpdateBar()
