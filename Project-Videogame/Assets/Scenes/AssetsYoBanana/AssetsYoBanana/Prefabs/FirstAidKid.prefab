@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6865140781363816135}
   - component: {fileID: 3792808150630408505}
   - component: {fileID: 555282318072153788}
-  - component: {fileID: 2605386342412012870}
   - component: {fileID: -757616623428655755}
   - component: {fileID: 7048680629650241756}
+  - component: {fileID: 6373267269380326283}
   m_Layer: 0
   m_Name: FirstAidKid
   m_TagString: Untagged
@@ -118,18 +118,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2605386342412012870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614686283123872843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e17dfcd24acf6e4c82554973adb9513, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemCollector
 --- !u!70 &-757616623428655755
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -264,6 +252,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6373267269380326283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614686283123872843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d71f28b3cf5b7a4bb2b9b487bc8b185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::fkdPickup
+  healAmount: 1
 --- !u!1 &2894083045419435020
 GameObject:
   m_ObjectHideFlags: 0

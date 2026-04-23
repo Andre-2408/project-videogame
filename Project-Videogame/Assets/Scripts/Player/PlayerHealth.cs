@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     [Header("Muerte")]
     [SerializeField] private float deathDelay = 0.5f;
     [SerializeField] private string deathScene;
-    [SerializeField] private GameObject deathAnimation; // arrastra MonkeyDie_0 aquí
+    [SerializeField] private GameObject deathAnimation; // arrastra MonkeyDie_0 aquï¿½
 
     private PlayerAnimationController _anim;
     private HitEffect _hitEffect;
@@ -32,6 +32,19 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public bool IsAlive => _currentHealth > 0;
+    public int CurrentHealth => _currentHealth;
+    public int MaxHealth => maxHealth;
+
+    // HealthBarUI se suscribe a este evento
+    public event System.Action<int, int> OnHealthChanged;
+
+    public void Heal(int amount = 1)
+    {
+        if (_currentHealth <= 0) return;          // ya muerto, no cura
+        _currentHealth += amount;
+        _currentHealth = Mathf.Min(_currentHealth, maxHealth);
+        UpdateBar();
+    }
 
     public void TakeDamage(int amount = 1, float attackerX = 0f)
     {
@@ -67,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
         foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
             sr.enabled = false;
 
-        // Activar animación de muerte en la misma posición
+        // Activar animaciï¿½n de muerte en la misma posiciï¿½n
         if (deathAnimation != null)
         {
             deathAnimation.transform.position = transform.position;
@@ -86,5 +99,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (healthBarFill != null)
             healthBarFill.fillAmount = (float)_currentHealth / maxHealth;
+        OnHealthChanged?.Invoke(_currentHealth, maxHealth);
     }
 }

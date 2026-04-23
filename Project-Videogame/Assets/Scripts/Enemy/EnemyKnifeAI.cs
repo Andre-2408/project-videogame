@@ -1,6 +1,7 @@
-ï»¿using UnityEngine;
+using UnityEngine;
+using System.Collections;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyKnifeAI : MonoBehaviour
 {
     [Header("Referencias")]
     public Transform player;
@@ -14,25 +15,26 @@ public class EnemyAI : MonoBehaviour
     public float jumpForce = 8f;
     public float jumpCooldown = 1.5f;
 
-    [Header("DetecciÃ³n de suelo")]
+    [Header("Detección de suelo")]
     public Transform groundCheck;
     public float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;
 
-    [Header("DetecciÃ³n de atasco")]
+    [Header("Detección de atasco")]
     public float stuckCheckInterval = 0.4f;
     public float stuckThreshold = 0.05f;
 
-    [Header("Rango de activaciÃ³n")]
+    [Header("Rango de activación")]
     public float activationRange = 8f;
 
-    [Header("Disparo")]
+    [Header("Ataque con cuchillo")]
+    public float attackCooldown = 1f;       // segundos entre ataques
+    public int attackDamage = 1;            // daño por acuchillada
+    public float attackRange = 0.8f;        // rango real de daño (puede ser mayor que stopDistance)
+
     [Header("Sonidos")]
     public AudioClip jumpSound;
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-    public float shootCooldown = 1.5f;
-    public AudioClip shootSound;
+    public AudioClip attackSound;
 
     private Rigidbody2D rb;
     private AudioSource _audio;
@@ -42,7 +44,7 @@ public class EnemyAI : MonoBehaviour
     private float _jumpTimer;
     private float _lastPositionX;
     private float _stuckTimer;
-    private float _shootTimer;
+    private float _attackTimer;
 
     void Start()
     {
@@ -61,7 +63,7 @@ public class EnemyAI : MonoBehaviour
     {
         float distance = Mathf.Abs(player.position.x - transform.position.x);
 
-        // Si el player estÃ¡ muy lejos, no hacer nada
+        // Si el player está muy lejos, no hacer nada
         if (distance > activationRange)
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
@@ -72,8 +74,7 @@ public class EnemyAI : MonoBehaviour
         // --- Suelo ---
         _isGrounded = Mathf.Abs(rb.linearVelocity.y) < 0.05f;
 
-        // --- Movimiento horizontal ---
-
+        // --- Distancia al player ---
         if (distance > stopDistance)
         {
             float direction = Mathf.Sign(player.position.x - transform.position.x);
@@ -86,16 +87,16 @@ public class EnemyAI : MonoBehaviour
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             animator.SetBool("isWalking", false);
 
-            // --- Disparo al llegar a stopDistance ---
-            _shootTimer -= Time.fixedDeltaTime;
-            if (_shootTimer <= 0f)
+            // --- Ataque al llegar ---
+            _attackTimer -= Time.fixedDeltaTime;
+            if (_attackTimer <= 0f)
             {
-                Shoot();
-                _shootTimer = shootCooldown;
+                Attack();
+                _attackTimer = attackCooldown;
             }
         }
 
-        // --- DetecciÃ³n de atasco y salto ---
+        // --- Detección de atasco y salto ---
         _jumpTimer -= Time.fixedDeltaTime;
         _stuckTimer += Time.fixedDeltaTime;
 
@@ -120,20 +121,23 @@ public class EnemyAI : MonoBehaviour
         Flip();
     }
 
-    void Shoot()
+    void Attack()
     {
-        if (bulletPrefab == null || firePoint == null) return;
-
+        // Activa animación
         animator.SetBool("isShooting", true);
 
-        if (_audio != null && shootSound != null)
-            _audio.PlayOneShot(shootSound);
+        // Sonido
+        if (_audio != null && attackSound != null)
+            _audio.PlayOneShot(attackSound);
 
-        float direction = Mathf.Sign(player.position.x - transform.position.x);
-        GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        EnemyBullet bullet = b.GetComponent<EnemyBullet>();
-        if (bullet != null)
-            bullet.SetDirection(direction);
+        // Daño real al player si está dentro del rango
+        float distance = Mathf.Abs(player.position.x - transform.position.x);
+        if (distance <= attackRange)
+        {
+            PlayerHealth health = player.GetComponent<PlayerHealth>();
+            if (health != null)
+                health.TakeDamage(attackDamage, transform.position.x);
+        }
     }
 
     void Flip()
@@ -190,5 +194,9 @@ public class EnemyAI : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
+
+        // Muestra el rango de ataque en el editor
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
