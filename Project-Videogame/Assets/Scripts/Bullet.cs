@@ -9,15 +9,21 @@ public class Bullet : MonoBehaviour
     private float       _direction = 1f;
     private float       _timer;
 
-    public void SetDirection(float dir) => _direction = dir;
+    public void SetDirection(float dir)
+    {
+        _direction = dir;
+        if (_rb == null) _rb = GetComponent<Rigidbody2D>();
+        if (_rb != null)
+            _rb.linearVelocity = new Vector2(_direction * speed, 0f);
+    }
 
     void OnEnable()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        if (_rb == null) _rb = GetComponent<Rigidbody2D>();
         if (_rb != null)
         {
-            _rb.gravityScale    = 0f;
-            _rb.linearVelocity  = new Vector2(_direction * speed, 0f);
+            _rb.gravityScale   = 0f;
+            _rb.linearVelocity = new Vector2(_direction * speed, 0f);
         }
         _timer = lifetime;
     }
