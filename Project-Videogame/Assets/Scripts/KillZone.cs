@@ -16,6 +16,14 @@ public class KillZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        // ── Enemigos: destruir al instante ──────────────
+        if (col.CompareTag("Enemy"))
+        {
+            Destroy(col.gameObject);
+            return;
+        }
+
+        // ── Player ──────────────────────────────────────
         if (!col.CompareTag("Player")) return;
 
         var health = col.GetComponent<PlayerHealth>();

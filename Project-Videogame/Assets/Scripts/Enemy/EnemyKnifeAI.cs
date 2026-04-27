@@ -13,136 +13,192 @@ public class EnemyKnifeAI : MonoBehaviour
 
     [Header("Salto")]
     public float jumpForce = 8f;
-    public float jumpCooldown = 1.5f;
+    public float jumpCooldown = 1.2f;
 
-    [Header("Detecci�n de suelo")]
+    [Header("Detección de suelo")]
     public Transform groundCheck;
-    public float groundCheckRadius = 0.1f;
+    public float groundCheckRadius = 0.15f;
     public LayerMask groundLayer;
 
-    [Header("Detecci�n de atasco")]
-    public float stuckCheckInterval = 0.4f;
+    [Header("Detección de pared / borde")]
+    public Transform wallCheck;
+    public float wallCheckDistance = 0.4f;
+    public Transform edgeCheck;
+    public float edgeCheckDistance = 0.5f;
+
+    [Header("Detección de atasco (respaldo)")]
+    public float stuckCheckInterval = 0.5f;
     public float stuckThreshold = 0.05f;
 
-    [Header("Rango de activaci�n")]
+    [Header("Rango de activación")]
     public float activationRange = 8f;
 
     [Header("Ataque con cuchillo")]
-    public float attackCooldown = 1f;       // segundos entre ataques
-    public int attackDamage = 1;            // da�o por acuchillada
-    public float attackRange = 0.8f;        // rango real de da�o (puede ser mayor que stopDistance)
+    public float attackCooldown = 1f;
+    public int   attackDamage   = 1;
+    public float attackRange    = 0.8f;
 
     [Header("Sonidos")]
     public AudioClip jumpSound;
     public AudioClip attackSound;
 
-    private Rigidbody2D rb;
+    // ── privados ──────────────────────────────────────
+    private Rigidbody2D _rb;
     private AudioSource _audio;
-    private Transform _visuals;
-    private bool _facingRight = true;
-    private bool _isGrounded;
-    private float _jumpTimer;
-    private float _lastPositionX;
-    private float _stuckTimer;
-    private float _attackTimer;
+    private Transform   _visuals;
+    private bool        _facingRight = true;
+    private bool        _isGrounded;
+    private float       _jumpTimer;
+    private float       _lastPositionX;
+    private float       _stuckTimer;
+    private float       _attackTimer;
 
+    // ════════════════════════════════════════════════
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        if (animator == null)
-            animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody2D>();
+        if (animator == null) animator = GetComponent<Animator>();
 
         _audio = GetComponent<AudioSource>();
         if (_audio == null) _audio = gameObject.AddComponent<AudioSource>();
 
         _lastPositionX = transform.position.x;
         BuildVisualContainer();
+
+        if (player == null)
+        {
+            var p = GameObject.FindGameObjectWithTag("Player");
+            if (p != null) player = p.transform;
+        }
     }
 
     void FixedUpdate()
     {
-        float distance = Mathf.Abs(player.position.x - transform.position.x);
+        if (player == null) return;
 
-        // Si el player est� muy lejos, no hacer nada
-        if (distance > activationRange)
+        // ── Detección de suelo real ──────────────────
+        _isGrounded = groundCheck != null
+            ? Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer)
+            : Mathf.Abs(_rb.linearVelocity.y) < 0.1f;
+
+        float distX = Mathf.Abs(player.position.x - transform.position.x);
+
+        if (distX > activationRange)
         {
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isShooting", false);
+            _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
+            SetAnim(false, false);
             return;
         }
-        // --- Suelo ---
-        _isGrounded = Mathf.Abs(rb.linearVelocity.y) < 0.05f;
 
-        // --- Distancia al player ---
-        if (distance > stopDistance)
+        float dir = Mathf.Sign(player.position.x - transform.position.x);
+
+        if (distX > stopDistance)
         {
-            float direction = Mathf.Sign(player.position.x - transform.position.x);
-            rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
-            animator.SetBool("isWalking", true);
-            animator.SetBool("isShooting", false);
+            // ── Detectar borde delante ───────────────
+            bool voidAhead = false;
+            if (edgeCheck != null)
+            {
+                Vector2 edgeOrigin = new Vector2(
+                    transform.position.x + dir * edgeCheckDistance,
+                    edgeCheck.position.y);
+                voidAhead = !Physics2D.Raycast(edgeOrigin, Vector2.down, 0.6f, groundLayer);
+            }
+
+            // ── Detectar pared delante ───────────────
+            bool wallAhead = false;
+            if (wallCheck != null)
+            {
+                wallAhead = Physics2D.Raycast(wallCheck.position, new Vector2(dir, 0),
+                                              wallCheckDistance, groundLayer);
+            }
+
+            if (voidAhead && _isGrounded)
+            {
+                _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
+                SetAnim(false, false);
+            }
+            else
+            {
+                _rb.linearVelocity = new Vector2(dir * speed, _rb.linearVelocity.y);
+                SetAnim(true, false);
+
+                if (wallAhead && _isGrounded && _jumpTimer <= 0f)
+                    DoJump();
+            }
         }
         else
         {
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            animator.SetBool("isWalking", false);
+            _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
+            SetAnim(false, false);
 
-            // --- Ataque al llegar ---
-            _attackTimer -= Time.fixedDeltaTime;
-            if (_attackTimer <= 0f)
+            if (_isGrounded)
             {
-                Attack();
-                _attackTimer = attackCooldown;
+                _attackTimer -= Time.fixedDeltaTime;
+                if (_attackTimer <= 0f)
+                {
+                    Attack();
+                    _attackTimer = attackCooldown;
+                }
             }
         }
 
-        // --- Detecci�n de atasco y salto ---
-        _jumpTimer -= Time.fixedDeltaTime;
+        // ── Anti-atasco (respaldo) ───────────────────
+        _jumpTimer  -= Time.fixedDeltaTime;
         _stuckTimer += Time.fixedDeltaTime;
 
         if (_stuckTimer >= stuckCheckInterval)
         {
             float movedX = Mathf.Abs(transform.position.x - _lastPositionX);
-            bool isStuck = movedX < stuckThreshold && distance > stopDistance;
+            bool  isStuck = movedX < stuckThreshold && distX > stopDistance;
 
             if (isStuck && _isGrounded && _jumpTimer <= 0f)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                _jumpTimer = jumpCooldown;
-
-                if (_audio != null && jumpSound != null)
-                    _audio.PlayOneShot(jumpSound);
-            }
+                DoJump();
 
             _lastPositionX = transform.position.x;
-            _stuckTimer = 0f;
+            _stuckTimer    = 0f;
         }
 
-        Flip();
+        Flip(dir);
+    }
+
+    // ── Helpers ──────────────────────────────────────
+    void DoJump()
+    {
+        _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
+        _jumpTimer = jumpCooldown;
+        if (_audio != null && jumpSound != null)
+            _audio.PlayOneShot(jumpSound);
     }
 
     void Attack()
     {
-        // Activa animaci�n
-        animator.SetBool("isShooting", true);
+        SetAnim(false, true);
 
-        // Sonido
         if (_audio != null && attackSound != null)
             _audio.PlayOneShot(attackSound);
 
-        // Da�o real al player si est� dentro del rango
-        float distance = Mathf.Abs(player.position.x - transform.position.x);
-        if (distance <= attackRange)
+        float dist = player != null
+            ? Mathf.Abs(player.position.x - transform.position.x)
+            : float.MaxValue;
+
+        if (dist <= attackRange)
         {
-            PlayerHealth health = player.GetComponent<PlayerHealth>();
+            var health = player.GetComponent<PlayerHealth>();
             if (health != null)
                 health.TakeDamage(attackDamage, transform.position.x);
         }
     }
 
-    void Flip()
+    void SetAnim(bool walking, bool attacking)
     {
-        bool lookRight = player.position.x > transform.position.x;
+        if (animator == null) return;
+        animator.SetBool("isWalking",  walking);
+        animator.SetBool("isShooting", attacking);
+    }
+
+    void Flip(float dir)
+    {
+        bool lookRight = dir > 0;
         if (_facingRight == lookRight) return;
         _facingRight = lookRight;
         if (_visuals == null) return;
@@ -175,7 +231,7 @@ public class EnemyKnifeAI : MonoBehaviour
         _visuals = container.transform;
         _visuals.SetParent(transform, false);
         _visuals.localPosition = new Vector3(centerX, 0f, 0f);
-        _visuals.localScale = Vector3.one;
+        _visuals.localScale    = Vector3.one;
         _visuals.localRotation = Quaternion.identity;
 
         foreach (Transform child in spriteChildren)
@@ -194,8 +250,16 @@ public class EnemyKnifeAI : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
-
-        // Muestra el rango de ataque en el editor
+        if (wallCheck != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(wallCheck.position, Vector3.right * wallCheckDistance);
+        }
+        if (edgeCheck != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawRay(edgeCheck.position, Vector3.down * 0.6f);
+        }
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }

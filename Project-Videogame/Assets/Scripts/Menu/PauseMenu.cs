@@ -353,7 +353,7 @@ public class PauseMenu : MonoBehaviour
         tmp.fontSize          = size;
         tmp.color             = color;
         tmp.alignment         = TextAlignmentOptions.Center;
-        tmp.enableWordWrapping = true;
+        tmp.textWrappingMode = TMPro.TextWrappingModes.Normal;
         if (gameFont != null) tmp.font = gameFont;
     }
 

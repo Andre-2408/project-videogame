@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -12,133 +12,197 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Salto")]
     public float jumpForce = 8f;
-    public float jumpCooldown = 1.5f;
+    public float jumpCooldown = 1.2f;
 
     [Header("Detección de suelo")]
     public Transform groundCheck;
-    public float groundCheckRadius = 0.1f;
+    public float groundCheckRadius = 0.15f;
     public LayerMask groundLayer;
 
-    [Header("Detección de atasco")]
-    public float stuckCheckInterval = 0.4f;
-    public float stuckThreshold = 0.05f;
+    [Header("Detección de pared / borde")]
+    public Transform wallCheck;          // punto al frente (mismo alto que centro)
+    public float wallCheckDistance = 0.4f;
+    public Transform edgeCheck;          // punto al frente pero más abajo (detecta vacío)
+    public float edgeCheckDistance = 0.5f;
+
+    [Header("Detección de atasco (respaldo)")]
+    public float stuckCheckInterval = 0.5f;
+    public float stuckThreshold    = 0.05f;
 
     [Header("Rango de activación")]
-    public float activationRange = 8f;
+    public float activationRange = 10f;
 
     [Header("Disparo")]
+    public GameObject bulletPrefab;
+    public Transform  firePoint;
+    public float      shootCooldown = 1.5f;
+
     [Header("Sonidos")]
     public AudioClip jumpSound;
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-    public float shootCooldown = 1.5f;
     public AudioClip shootSound;
 
-    private Rigidbody2D rb;
+    // ── privados ──────────────────────────────────────
+    private Rigidbody2D _rb;
     private AudioSource _audio;
-    private Transform _visuals;
-    private bool _facingRight = true;
-    private bool _isGrounded;
-    private float _jumpTimer;
-    private float _lastPositionX;
-    private float _stuckTimer;
-    private float _shootTimer;
+    private Transform   _visuals;
+    private bool        _facingRight = true;
+    private bool        _isGrounded;
+    private float       _jumpTimer;
+    private float       _lastPositionX;
+    private float       _stuckTimer;
+    private float       _shootTimer;
 
+    // ════════════════════════════════════════════════
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        if (animator == null)
-            animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody2D>();
+
+        if (animator == null) animator = GetComponent<Animator>();
 
         _audio = GetComponent<AudioSource>();
         if (_audio == null) _audio = gameObject.AddComponent<AudioSource>();
 
         _lastPositionX = transform.position.x;
         BuildVisualContainer();
+
+        // Si player no se asignó en Inspector, búscalo
+        if (player == null)
+        {
+            var p = GameObject.FindGameObjectWithTag("Player");
+            if (p != null) player = p.transform;
+        }
     }
 
     void FixedUpdate()
     {
-        float distance = Mathf.Abs(player.position.x - transform.position.x);
+        if (player == null) return;
 
-        // Si el player está muy lejos, no hacer nada
-        if (distance > activationRange)
+        // ── Detección de suelo con Physics2D (confiable) ──
+        _isGrounded = groundCheck != null
+            ? Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer)
+            : Mathf.Abs(_rb.linearVelocity.y) < 0.1f;
+
+        float distX = Mathf.Abs(player.position.x - transform.position.x);
+
+        // Si está muy lejos, parar
+        if (distX > activationRange)
         {
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isShooting", false);
+            _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
+            SetAnim(false, false);
             return;
         }
-        // --- Suelo ---
-        _isGrounded = Mathf.Abs(rb.linearVelocity.y) < 0.05f;
 
-        // --- Movimiento horizontal ---
+        float dir = Mathf.Sign(player.position.x - transform.position.x);
 
-        if (distance > stopDistance)
+        if (distX > stopDistance)
         {
-            float direction = Mathf.Sign(player.position.x - transform.position.x);
-            rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
-            animator.SetBool("isWalking", true);
-            animator.SetBool("isShooting", false);
+            // ── Detectar borde delante ───────────────────
+            bool voidAhead = false;
+            if (edgeCheck != null)
+            {
+                Vector2 edgeOrigin = new Vector2(
+                    transform.position.x + dir * edgeCheckDistance,
+                    edgeCheck.position.y);
+                voidAhead = !Physics2D.Raycast(edgeOrigin, Vector2.down, 0.6f, groundLayer);
+            }
+
+            // ── Detectar pared delante ───────────────────
+            bool wallAhead = false;
+            if (wallCheck != null)
+            {
+                wallAhead = Physics2D.Raycast(wallCheck.position, new Vector2(dir, 0),
+                                              wallCheckDistance, groundLayer);
+            }
+
+            if (voidAhead && _isGrounded)
+            {
+                // Detener — hay vacío adelante
+                _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
+                SetAnim(false, false);
+            }
+            else
+            {
+                _rb.linearVelocity = new Vector2(dir * speed, _rb.linearVelocity.y);
+                SetAnim(true, false);
+
+                // Saltar si hay pared delante
+                if (wallAhead && _isGrounded && _jumpTimer <= 0f)
+                    DoJump();
+            }
         }
         else
         {
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            animator.SetBool("isWalking", false);
+            // En rango de ataque — parar y disparar
+            _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
+            SetAnim(false, false);
 
-            // --- Disparo al llegar a stopDistance ---
-            _shootTimer -= Time.fixedDeltaTime;
-            if (_shootTimer <= 0f)
+            if (_isGrounded)   // solo dispara si está en el suelo
             {
-                Shoot();
-                _shootTimer = shootCooldown;
+                _shootTimer -= Time.fixedDeltaTime;
+                if (_shootTimer <= 0f)
+                {
+                    Shoot();
+                    _shootTimer = shootCooldown;
+                }
             }
         }
 
-        // --- Detección de atasco y salto ---
-        _jumpTimer -= Time.fixedDeltaTime;
+        // ── Anti-atasco (respaldo) ───────────────────────
+        _jumpTimer  -= Time.fixedDeltaTime;
         _stuckTimer += Time.fixedDeltaTime;
 
         if (_stuckTimer >= stuckCheckInterval)
         {
             float movedX = Mathf.Abs(transform.position.x - _lastPositionX);
-            bool isStuck = movedX < stuckThreshold && distance > stopDistance;
+            bool  isStuck = movedX < stuckThreshold && distX > stopDistance;
 
             if (isStuck && _isGrounded && _jumpTimer <= 0f)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                _jumpTimer = jumpCooldown;
-
-                if (_audio != null && jumpSound != null)
-                    _audio.PlayOneShot(jumpSound);
-            }
+                DoJump();
 
             _lastPositionX = transform.position.x;
-            _stuckTimer = 0f;
+            _stuckTimer    = 0f;
         }
 
-        Flip();
+        Flip(dir);
+    }
+
+    // ── Helpers ──────────────────────────────────────
+    void DoJump()
+    {
+        _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
+        _jumpTimer = jumpCooldown;
+        if (_audio != null && jumpSound != null)
+            _audio.PlayOneShot(jumpSound);
     }
 
     void Shoot()
     {
         if (bulletPrefab == null || firePoint == null) return;
 
-        animator.SetBool("isShooting", true);
+        SetAnim(false, true);
 
         if (_audio != null && shootSound != null)
             _audio.PlayOneShot(shootSound);
 
-        float direction = Mathf.Sign(player.position.x - transform.position.x);
+        float dir = player != null
+            ? Mathf.Sign(player.position.x - transform.position.x)
+            : (_facingRight ? 1f : -1f);
+
         GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        EnemyBullet bullet = b.GetComponent<EnemyBullet>();
-        if (bullet != null)
-            bullet.SetDirection(direction);
+        var bullet = b.GetComponent<EnemyBullet>();
+        if (bullet != null) bullet.SetDirection(dir);
     }
 
-    void Flip()
+    void SetAnim(bool walking, bool shooting)
     {
-        bool lookRight = player.position.x > transform.position.x;
+        if (animator == null) return;
+        animator.SetBool("isWalking",  walking);
+        animator.SetBool("isShooting", shooting);
+    }
+
+    void Flip(float dir)
+    {
+        bool lookRight = dir > 0;
         if (_facingRight == lookRight) return;
         _facingRight = lookRight;
         if (_visuals == null) return;
@@ -171,7 +235,7 @@ public class EnemyAI : MonoBehaviour
         _visuals = container.transform;
         _visuals.SetParent(transform, false);
         _visuals.localPosition = new Vector3(centerX, 0f, 0f);
-        _visuals.localScale = Vector3.one;
+        _visuals.localScale    = Vector3.one;
         _visuals.localRotation = Quaternion.identity;
 
         foreach (Transform child in spriteChildren)
@@ -185,10 +249,23 @@ public class EnemyAI : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
+        // Suelo
         if (groundCheck != null)
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+        // Pared
+        if (wallCheck != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(wallCheck.position, Vector3.right * wallCheckDistance);
+        }
+        // Borde
+        if (edgeCheck != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawRay(edgeCheck.position, Vector3.down * 0.6f);
         }
     }
 }
