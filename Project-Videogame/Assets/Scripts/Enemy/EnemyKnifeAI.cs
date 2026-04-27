@@ -48,6 +48,8 @@ public class EnemyKnifeAI : MonoBehaviour
     private Transform   _visuals;
     private bool        _facingRight = true;
     private bool        _isGrounded;
+    private bool        _lastWalking;
+    private bool        _lastAttacking;
     private float       _jumpTimer;
     private float       _lastPositionX;
     private float       _stuckTimer;
@@ -194,8 +196,8 @@ public class EnemyKnifeAI : MonoBehaviour
     void SetAnim(bool walking, bool attacking)
     {
         if (animator == null) return;
-        animator.SetBool("isWalking",  walking);
-        animator.SetBool("isShooting", attacking);
+        if (walking   != _lastWalking)   { animator.SetBool("isWalking",  walking);   _lastWalking   = walking; }
+        if (attacking != _lastAttacking) { animator.SetBool("isShooting", attacking); _lastAttacking = attacking; }
     }
 
     void Flip(float dir)

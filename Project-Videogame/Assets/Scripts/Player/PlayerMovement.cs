@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isGrounded;
     private bool _wasGrounded;
+    private bool _wasWalking;
     private bool _facingRight = true;
     private float _moveX;
 
@@ -58,7 +59,12 @@ public class PlayerMovement : MonoBehaviour
         if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed) _moveX = -1f;
         if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) _moveX = 1f;
 
-        _anim.SetWalking(_moveX != 0);
+        bool isWalking = _moveX != 0;
+        if (isWalking != _wasWalking)
+        {
+            _anim.SetWalking(isWalking);
+            _wasWalking = isWalking;
+        }
 
         // --- Flip ---
         if (_moveX > 0 && !_facingRight) SetFacing(true);

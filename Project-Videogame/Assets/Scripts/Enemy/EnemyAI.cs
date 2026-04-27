@@ -47,6 +47,8 @@ public class EnemyAI : MonoBehaviour
     private Transform   _visuals;
     private bool        _facingRight = true;
     private bool        _isGrounded;
+    private bool        _lastWalking;
+    private bool        _lastShooting;
     private float       _jumpTimer;
     private float       _lastPositionX;
     private float       _stuckTimer;
@@ -189,9 +191,14 @@ public class EnemyAI : MonoBehaviour
             ? Mathf.Sign(player.position.x - transform.position.x)
             : (_facingRight ? 1f : -1f);
 
+        // Spawn siempre delante del enemigo (en la dirección al player)
+        Vector3 spawnPos = firePoint != null
+            ? transform.position + new Vector3(dir * Mathf.Abs(firePoint.localPosition.x), firePoint.localPosition.y, 0f)
+            : transform.position + new Vector3(dir * 0.5f, 0f, 0f);
+
         GameObject b = BulletPool.Instance != null
-            ? BulletPool.Instance.GetEnemyBullet(firePoint.position, Quaternion.identity)
-            : Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            ? BulletPool.Instance.GetEnemyBullet(spawnPos, Quaternion.identity)
+            : Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
         var bullet = b.GetComponent<EnemyBullet>();
         if (bullet != null) bullet.SetDirection(dir);
     }
@@ -199,8 +206,8 @@ public class EnemyAI : MonoBehaviour
     void SetAnim(bool walking, bool shooting)
     {
         if (animator == null) return;
-        animator.SetBool("isWalking",  walking);
-        animator.SetBool("isShooting", shooting);
+        if (walking  != _lastWalking)  { animator.SetBool("isWalking",  walking);  _lastWalking  = walking; }
+        if (shooting != _lastShooting) { animator.SetBool("isShooting", shooting); _lastShooting = shooting; }
     }
 
     void Flip(float dir)
