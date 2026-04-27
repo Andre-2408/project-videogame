@@ -77,10 +77,10 @@ public class EnemyAI : MonoBehaviour
     {
         if (player == null) return;
 
-        // ── Detección de suelo con Physics2D (confiable) ──
-        _isGrounded = groundCheck != null
-            ? Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer)
-            : Mathf.Abs(_rb.linearVelocity.y) < 0.1f;
+        // ── Detección de suelo con Physics2D (con fallback a velocidad) ──
+        bool physicsGrounded = groundCheck != null &&
+            Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        _isGrounded = physicsGrounded || Mathf.Abs(_rb.linearVelocity.y) < 0.08f;
 
         float distX = Mathf.Abs(player.position.x - transform.position.x);
 
@@ -106,12 +106,13 @@ public class EnemyAI : MonoBehaviour
                 voidAhead = !Physics2D.Raycast(edgeOrigin, Vector2.down, 0.6f, groundLayer);
             }
 
-            // ── Detectar pared delante ───────────────────
+            // ── Detectar pared delante (cualquier obstáculo sólido) ──────────
             bool wallAhead = false;
             if (wallCheck != null)
             {
+                int mask = ~(LayerMask.GetMask("Enemy") | LayerMask.GetMask("Player"));
                 wallAhead = Physics2D.Raycast(wallCheck.position, new Vector2(dir, 0),
-                                              wallCheckDistance, groundLayer);
+                                              wallCheckDistance, mask);
             }
 
             if (voidAhead && _isGrounded)

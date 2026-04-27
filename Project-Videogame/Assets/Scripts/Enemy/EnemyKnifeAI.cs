@@ -76,10 +76,10 @@ public class EnemyKnifeAI : MonoBehaviour
     {
         if (player == null) return;
 
-        // ── Detección de suelo real ──────────────────
-        _isGrounded = groundCheck != null
-            ? Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer)
-            : Mathf.Abs(_rb.linearVelocity.y) < 0.1f;
+        // ── Detección de suelo real (con fallback a velocidad) ──
+        bool physicsGrounded = groundCheck != null &&
+            Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        _isGrounded = physicsGrounded || Mathf.Abs(_rb.linearVelocity.y) < 0.08f;
 
         float distX = Mathf.Abs(player.position.x - transform.position.x);
 
@@ -104,12 +104,14 @@ public class EnemyKnifeAI : MonoBehaviour
                 voidAhead = !Physics2D.Raycast(edgeOrigin, Vector2.down, 0.6f, groundLayer);
             }
 
-            // ── Detectar pared delante ───────────────
+            // ── Detectar pared delante (sin filtro de layer, detecta cualquier obstáculo) ──
             bool wallAhead = false;
             if (wallCheck != null)
             {
+                // Excluye al propio enemigo y al player para no dispararse a sí mismo
+                int mask = ~(LayerMask.GetMask("Enemy") | LayerMask.GetMask("Player"));
                 wallAhead = Physics2D.Raycast(wallCheck.position, new Vector2(dir, 0),
-                                              wallCheckDistance, groundLayer);
+                                              wallCheckDistance, mask);
             }
 
             if (voidAhead && _isGrounded)
