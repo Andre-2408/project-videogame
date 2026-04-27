@@ -2,40 +2,50 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public float speed = 10f;
-    public float lifetime = 3f;
+    public float speed    = 10f;
+    public float lifetime = 5f;
 
     private Rigidbody2D _rb;
-    private float _direction = 1f;
+    private float       _direction = 1f;
+    private float       _timer;
 
-    public void SetDirection(float dir)
-    {
-        _direction = dir;
-    }
+    public void SetDirection(float dir) => _direction = dir;
 
-    void Start()
+    void OnEnable()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _rb.gravityScale = 0f;
-        _rb.linearVelocity = new Vector2(_direction * speed, 0f);
-        Destroy(gameObject, lifetime);
+        if (_rb != null)
+        {
+            _rb.gravityScale   = 0f;
+            _rb.linearVelocity = new Vector2(_direction * speed, 0f);
+        }
+        _timer = lifetime;
+    }
+
+    void Update()
+    {
+        _timer -= Time.deltaTime;
+        if (_timer <= 0f) Recycle();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Daña al player
         if (other.CompareTag("Player"))
         {
-            PlayerHealth health = other.GetComponent<PlayerHealth>();
-            if (health != null)
-                health.TakeDamage(1);
-
-            Destroy(gameObject);
+            var health = other.GetComponent<PlayerHealth>();
+            if (health != null) health.TakeDamage(1);
+            Recycle();
             return;
         }
-
-        // Se destruye con cualquier otra cosa excepto el enemigo
         if (!other.CompareTag("Enemy"))
+            Recycle();
+    }
+
+    private void Recycle()
+    {
+        if (BulletPool.Instance != null)
+            BulletPool.Instance.ReturnEnemyBullet(gameObject);
+        else
             Destroy(gameObject);
     }
 }

@@ -27,7 +27,9 @@ public class PlayerShoot : MonoBehaviour
             ? (_anim.CurrentWeapon == PlayerAnimationController.Weapon.Gun ? GetFacingDirection() : 0f)
             : GetFacingDirection();
 
-        GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        GameObject b = BulletPool.Instance != null
+            ? BulletPool.Instance.GetPlayerBullet(firePoint.position, Quaternion.identity)
+            : Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         Bullet bullet = b.GetComponent<Bullet>();
         if (bullet != null)
             bullet.SetDirection(direction);

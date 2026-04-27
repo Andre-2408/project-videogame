@@ -189,7 +189,9 @@ public class EnemyAI : MonoBehaviour
             ? Mathf.Sign(player.position.x - transform.position.x)
             : (_facingRight ? 1f : -1f);
 
-        GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        GameObject b = BulletPool.Instance != null
+            ? BulletPool.Instance.GetEnemyBullet(firePoint.position, Quaternion.identity)
+            : Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         var bullet = b.GetComponent<EnemyBullet>();
         if (bullet != null) bullet.SetDirection(dir);
     }

@@ -96,7 +96,6 @@ public class PlayerAnimationController : MonoBehaviour
             child.localPosition = lp;
         }
 
-        Debug.Log($"[PlayerAnim] _Visuals creado en X={centerX:F3} con {spriteChildren.Count} sprites");
     }
 
     // ----------------------------------------------------------------

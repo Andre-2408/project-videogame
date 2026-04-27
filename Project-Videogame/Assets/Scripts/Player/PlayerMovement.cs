@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerShoot _shoot;
 
     private bool _isGrounded;
+    private bool _wasGrounded;
     private bool _facingRight = true;
     private float _moveX;
 
@@ -63,9 +64,13 @@ public class PlayerMovement : MonoBehaviour
         if (_moveX > 0 && !_facingRight) SetFacing(true);
         if (_moveX < 0 && _facingRight) SetFacing(false);
 
-        // --- Deteccion de suelo ---
+        // --- Deteccion de suelo (solo actualiza Animator si cambia el estado) ---
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        _anim.SetJumping(!_isGrounded);
+        if (_isGrounded != _wasGrounded)
+        {
+            _anim.SetJumping(!_isGrounded);
+            _wasGrounded = _isGrounded;
+        }
 
         // --- Salto ---
         if (keyboard.spaceKey.wasPressedThisFrame && _isGrounded)
