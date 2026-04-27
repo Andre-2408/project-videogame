@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -32,8 +32,8 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public bool IsAlive => _currentHealth > 0;
-    public int CurrentHealth => _currentHealth;
-    public int MaxHealth => maxHealth;
+    public int  CurrentHealth => _currentHealth;
+    public int  MaxHealth     => maxHealth;
 
     // HealthBarUI se suscribe a este evento
     public event System.Action<int, int> OnHealthChanged;
