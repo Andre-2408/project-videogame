@@ -9,7 +9,13 @@
       "Bash(done)",
       "Bash(for f in \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Legs\\\\monkeyStaticLegs.png.meta\" \"D:\\\\GitHub\\\\project-videogame\\\\Project-Videogame\\\\Assets\\\\Scenes\\\\AssetsYoBanana\\\\AssetsYoBanana\\\\Player\\\\Torso\\\\Weapon\\\\monkeyStaticWeapon.png.meta\")",
       "Bash(for f in \"monkeyWalkWeapon.png.meta\" \"monkeyAtackWeapon.png.meta\" \"monkeyStaticKnife.png.meta\" \"monkeyWalkKnife.png.meta\" \"monkeyAtackKnife.png.meta\")",
-      "Read(//d/GitHub/project-videogame/Project-Videogame/Assets/Scenes/AssetsYoBanana/AssetsYoBanana/Player/Torso/**)"
+      "Read(//d/GitHub/project-videogame/Project-Videogame/Assets/Scenes/AssetsYoBanana/AssetsYoBanana/Player/Torso/**)",
+      "mcp__Claude_in_Chrome__navigate",
+      "Bash(git checkout *)",
+      "PowerShell(Get-ChildItem \"D:\\\\GitHub\\\\project-videogame\\\\\" | Select-Object Name, LastWriteTime, @{Name=\"Size\";Expression={if\\($_.PSIsContainer\\){\"[DIR]\"}else{\"{0:N0} KB\" -f \\($_.Length/1KB\\)}}})",
+      "PowerShell(Add-Type -AssemblyName System.IO.Compression.FileSystem; $zip = [System.IO.Compression.ZipFile]::OpenRead\\('D:\\\\GitHub\\\\project-videogame\\\\AudiosBoss.zip'\\); $zip.Entries | ForEach-Object { Write-Host $_.FullName }; $zip.Dispose\\(\\))",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
