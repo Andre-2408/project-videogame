@@ -28,7 +28,8 @@ public class ItemCollector : MonoBehaviour
             // Activa el hijo (la animaci�n de recolecci�n)
             transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
 
-            FindFirstObjectByType<ScoreManager>().AddPoints(points);
+            if (ScoreManager.instance != null)
+                ScoreManager.instance.AddPoints(points);
 
             // Destruye el objeto despu�s de un tiempo (ajusta seg�n la duraci�n de tu animaci�n)
             Destroy(gameObject, 0.3f);

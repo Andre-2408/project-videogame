@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
@@ -7,12 +8,21 @@ public class EnemyHealth : MonoBehaviour
     public int maxHits = 3;
 
     [Header("Muerte")]
-    [SerializeField] private GameObject deathAnimation; // arrastra el objeto de muerte aquí
-    [SerializeField] private float deathDelay = 1f;     // tiempo antes de destruir
+    [SerializeField] private GameObject deathAnimation;
+    [SerializeField] private float deathDelay = 1f;
+
+    [Header("Boss - dejar vacÃ­o si no es boss")]
+    [Tooltip("Si se asigna, al morir carga esta escena (ideal para el boss final)")]
+    [SerializeField] private string winnerScene = "";
+    [Tooltip("Puntos que otorga al morir")]
+    [SerializeField] private int scoreReward = 0;
 
     private int _currentHits;
     private HitEffect _hitEffect;
     private bool _isDead = false;
+
+    public int CurrentHits => _currentHits;
+    public bool IsDead => _isDead;
 
     void Start()
     {
@@ -40,7 +50,12 @@ public class EnemyHealth : MonoBehaviour
     {
         _isDead = true;
 
-        // Bloquear movimiento
+        if (scoreReward > 0 && ScoreManager.instance != null)
+            ScoreManager.instance.AddPoints(scoreReward);
+
+        var bossAI = GetComponent<GorillaBossAI>();
+        if (bossAI != null) bossAI.SetDead();
+
         var rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
@@ -49,14 +64,11 @@ public class EnemyHealth : MonoBehaviour
         }
 
         var ai = GetComponent<EnemyAI>();
-        if (ai != null)
-            ai.enabled = false;
+        if (ai != null) ai.enabled = false;
 
-        // Ocultar sprites normales
         foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
             sr.enabled = false;
 
-        // Activar animación de muerte
         if (deathAnimation != null)
         {
             deathAnimation.transform.position = transform.position;
@@ -65,6 +77,15 @@ public class EnemyHealth : MonoBehaviour
 
         yield return new WaitForSeconds(deathDelay);
 
-        Destroy(gameObject);
+        if (!string.IsNullOrEmpty(winnerScene))
+        {
+            if (ScoreManager.instance != null)
+                ScoreManager.instance.SaveToPrefs();
+            SceneManager.LoadScene(winnerScene);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

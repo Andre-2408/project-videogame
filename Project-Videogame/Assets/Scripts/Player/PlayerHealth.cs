@@ -12,48 +12,80 @@ public class PlayerHealth : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Image healthBarFill;
 
-    [Header("Muerte")]
-    [SerializeField] private float deathDelay = 0.5f;
-    [SerializeField] private string deathScene;
-    [SerializeField] private GameObject deathAnimation; // arrastra MonkeyDie_0 aqu�
+    [Header("Vidas y Muerte")]
+    [SerializeField] private float deathDelay   = 0.5f;
+    [SerializeField] private int   maxLives      = 3;
+    [SerializeField] private string gameOverScene = "GameOverScene";
+    [SerializeField] private GameObject deathAnimation;
 
-    private PlayerAnimationController _anim;
-    private HitEffect _hitEffect;
+    // ── Acceso ───────────────────────────────────────
+    public bool IsAlive        => _currentHealth > 0;
+    public int  CurrentHealth  => _currentHealth;
+    public int  MaxHealth      => maxHealth;
 
+    // Evento para HealthBarUI
+    public event System.Action<int, int> OnHealthChanged;
+
+    // Evento estático para LivesHUD (persiste entre escenas)
+    public static event System.Action<int> OnLivesChanged;
+
+    // ── PlayerPrefs keys ─────────────────────────────
+    public const string LivesKey     = "PlayerLives";
+    public const string LastSceneKey = "LastScene";
+
+    // ── Llamar desde Menu al iniciar partida ─────────
+    public static void InitNewGame(int lives = 3)
+    {
+        PlayerPrefs.SetInt(LivesKey, lives);
+        PlayerPrefs.SetString(LastSceneKey, "SampleScene");
+        PlayerPrefs.Save();
+    }
+
+    public static int GetCurrentLives() => PlayerPrefs.GetInt(LivesKey, 3);
+
+    // ── Añadir vida extra (item) ─────────────────────
+    public void AddLife(int amount = 1)
+    {
+        int lives = Mathf.Min(PlayerPrefs.GetInt(LivesKey, maxLives) + amount, maxLives);
+        PlayerPrefs.SetInt(LivesKey, lives);
+        PlayerPrefs.Save();
+        OnLivesChanged?.Invoke(lives);
+    }
+
+    // ════════════════════════════════════════════════
     void Awake()
     {
-        _anim = GetComponent<PlayerAnimationController>();
+        _anim      = GetComponent<PlayerAnimationController>();
         _hitEffect = GetComponent<HitEffect>();
         _currentHealth = maxHealth;
         UpdateBar();
 
         if (deathAnimation != null)
             deathAnimation.SetActive(false);
+
+        // Guardar escena actual como último checkpoint
+        PlayerPrefs.SetString(LastSceneKey, SceneManager.GetActiveScene().name);
+        PlayerPrefs.Save();
     }
 
-    public bool IsAlive => _currentHealth > 0;
-    public int  CurrentHealth => _currentHealth;
-    public int  MaxHealth     => maxHealth;
+    private PlayerAnimationController _anim;
+    private HitEffect _hitEffect;
 
-    // HealthBarUI se suscribe a este evento
-    public event System.Action<int, int> OnHealthChanged;
-
+    // ════════════════════════════════════════════════
     public void Heal(int amount = 1)
     {
-        if (_currentHealth <= 0) return;          // ya muerto, no cura
-        _currentHealth += amount;
-        _currentHealth = Mathf.Min(_currentHealth, maxHealth);
+        if (_currentHealth <= 0) return;
+        _currentHealth = Mathf.Min(_currentHealth + amount, maxHealth);
         UpdateBar();
     }
 
     public void TakeDamage(int amount = 1, float attackerX = 0f)
     {
         if (_currentHealth <= 0) return;
-
         _currentHealth -= amount;
-        _currentHealth = Mathf.Max(0, _currentHealth);
+        _currentHealth  = Mathf.Max(0, _currentHealth);
 
-        if (_anim != null) _anim.PlayDamageSound();
+        if (_anim      != null) _anim.PlayDamageSound();
         if (_hitEffect != null) _hitEffect.TakeHit(attackerX - transform.position.x);
 
         UpdateBar();
@@ -62,25 +94,18 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(Die());
     }
 
+    // ════════════════════════════════════════════════
     private IEnumerator Die()
     {
-        // Bloquear movimiento y input
         var rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-            rb.bodyType = RigidbodyType2D.Static; // congela el rigidbody
-        }
+        if (rb != null) { rb.linearVelocity = Vector2.zero; rb.bodyType = RigidbodyType2D.Static; }
 
         var movement = GetComponent<PlayerMovement>();
-        if (movement != null)
-            movement.enabled = false; // desactiva el script de movimiento
+        if (movement != null) movement.enabled = false;
 
-        // Ocultar sprites normales del player
         foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
             sr.enabled = false;
 
-        // Activar animaci�n de muerte en la misma posici�n
         if (deathAnimation != null)
         {
             deathAnimation.transform.position = transform.position;
@@ -89,10 +114,22 @@ public class PlayerHealth : MonoBehaviour
 
         yield return new WaitForSeconds(deathDelay);
 
-        if (!string.IsNullOrEmpty(deathScene))
-            SceneManager.LoadScene(deathScene);
+        // ── Sistema de vidas ──────────────────────
+        int lives = Mathf.Max(0, PlayerPrefs.GetInt(LivesKey, maxLives) - 1);
+        PlayerPrefs.SetInt(LivesKey, lives);
+        PlayerPrefs.Save();
+        OnLivesChanged?.Invoke(lives);
+
+        if (lives <= 0)
+        {
+            if (ScoreManager.instance != null)
+                ScoreManager.instance.SaveToPrefs();
+            SceneManager.LoadScene(gameOverScene);
+        }
         else
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     private void UpdateBar()

@@ -82,7 +82,11 @@ public class Menu : MonoBehaviour
     // ════════════════════════════════════════════
     // ─── Acciones ────────────────────────────────
 
-    public void PlayGame()  => StartCoroutine(FadeAndLoad(firstLevel));
+    public void PlayGame()
+    {
+        PlayerHealth.InitNewGame();
+        StartCoroutine(FadeAndLoad(firstLevel));
+    }
     public void QuitGame()
     {
 #if UNITY_EDITOR

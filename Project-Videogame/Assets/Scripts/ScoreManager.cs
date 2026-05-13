@@ -3,22 +3,52 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public int score = 0; // Contador de puntos
-    public TextMeshProUGUI scoreText; // Referencia al texto en pantalla
+    public static ScoreManager instance { get; private set; }
 
-    void Start()
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timerText;
+
+    public int score { get; private set; }
+
+    private float _startTime;
+
+    public const string PrefsScore = "FinalScore";
+    public const string PrefsTime  = "FinalTime";
+
+    void Awake()
     {
-        UpdateScoreText();
+        if (instance != null && instance != this) { Destroy(gameObject); return; }
+        instance = this;
+        _startTime = Time.time;
+    }
+
+    void Update()
+    {
+        if (timerText != null)
+            timerText.text = FormatTime(GetElapsedTime());
     }
 
     public void AddPoints(int points)
     {
         score += points;
-        UpdateScoreText();
+        if (scoreText != null)
+            scoreText.text = "Puntos: " + score;
     }
 
-    void UpdateScoreText()
+    public float GetElapsedTime() => Time.time - _startTime;
+
+    // Llama esto antes de cargar la WinnerScene
+    public void SaveToPrefs()
     {
-        scoreText.text = "Puntos: " + score;
+        PlayerPrefs.SetInt(PrefsScore, score);
+        PlayerPrefs.SetFloat(PrefsTime, GetElapsedTime());
+        PlayerPrefs.Save();
+    }
+
+    public static string FormatTime(float seconds)
+    {
+        int m = (int)(seconds / 60);
+        int s = (int)(seconds % 60);
+        return string.Format("{0:00}:{1:00}", m, s);
     }
 }

@@ -1,3 +1,19 @@
+# ── Archivos locales que NO van al repo ──────────────────
+/*.zip
+/NuevosSprites.zip
+/AudiosBoss.zip
+/WhatsApp*.jpeg
+/WhatsApp*.jpg
+/Project-Videogame_BurstDebugInformation_DoNotShip/
+Project-Videogame/project-videogame/
+Project-Videogame/.claude/settings.local.json
+Project-Videogame/.vscode/
+Project-Videogame/Project-Videogame.slnx
+
+# Escenas de respaldo (copias temporales, no son niveles reales)
+Assets/Scenes/*[0-9].unity
+Assets/Scenes/*[0-9].unity.meta
+
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore

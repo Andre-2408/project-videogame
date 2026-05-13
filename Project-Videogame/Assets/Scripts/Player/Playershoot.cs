@@ -4,44 +4,85 @@ public class PlayerShoot : MonoBehaviour
 {
     [Header("Disparo")]
     public GameObject bulletPrefab;
-    public Transform firePoint; // punto de salida de la bala
+    public Transform  firePoint;
 
     private PlayerAnimationController _anim;
+    private PowerUpManager            _powerUp;
     private bool _facingRight = true;
 
+    // ════════════════════════════════════════════
     void Awake()
     {
-        _anim = GetComponent<PlayerAnimationController>();
+        _anim    = GetComponent<PlayerAnimationController>();
+        _powerUp = GetComponent<PowerUpManager>();
     }
 
-    // Llamado desde PlayerMovement cuando se hace click izquierdo
+    // ── Llamado desde PlayerMovement ─────────────
     public void Shoot()
     {
         if (bulletPrefab == null || firePoint == null) return;
 
-        // Solo dispara si tiene pistola equipada
+        // Solo dispara con pistola
         if (_anim != null && _anim.CurrentWeapon != PlayerAnimationController.Weapon.Gun)
             return;
 
-        float direction = _anim != null
-            ? (_anim.CurrentWeapon == PlayerAnimationController.Weapon.Gun ? GetFacingDirection() : 0f)
-            : GetFacingDirection();
+        PowerUpType active = _powerUp != null ? _powerUp.ActiveType : PowerUpType.None;
 
-        GameObject b = BulletPool.Instance != null
+        switch (active)
+        {
+            case PowerUpType.SpreadShot: ShootSpread(); break;
+            case PowerUpType.ZigzagShot: ShootZigzag(); break;
+            default:                     ShootNormal(); break;
+        }
+    }
+
+    public void SetFacing(bool facingRight) => _facingRight = facingRight;
+
+    // ════════════════════════════════════════════
+    private void ShootNormal()
+    {
+        var b = SpawnBullet();
+        if (b == null) return;
+        b.GetComponent<Bullet>()?.SetDirection(FacingDir());
+    }
+
+    private void ShootSpread()
+    {
+        int[] angles = { -15, 0, 15 };
+        float dir = FacingDir();
+        foreach (int angleDeg in angles)
+        {
+            var b = SpawnBullet();
+            if (b == null) continue;
+            var bullet = b.GetComponent<Bullet>();
+            if (bullet == null) continue;
+
+            float rad = angleDeg * Mathf.Deg2Rad;
+            var vel = new Vector2(
+                Mathf.Cos(rad) * bullet.speed * dir,
+                Mathf.Sin(rad) * bullet.speed
+            );
+            bullet.SetVelocity(vel);
+        }
+    }
+
+    private void ShootZigzag()
+    {
+        var b = SpawnBullet();
+        if (b == null) return;
+        var bullet = b.GetComponent<Bullet>();
+        if (bullet == null) return;
+        bullet.mode = Bullet.BulletMode.Zigzag;
+        bullet.SetDirection(FacingDir());
+    }
+
+    // ════════════════════════════════════════════
+    private GameObject SpawnBullet()
+    {
+        return BulletPool.Instance != null
             ? BulletPool.Instance.GetPlayerBullet(firePoint.position, Quaternion.identity)
-            : Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        Bullet bullet = b.GetComponent<Bullet>();
-        if (bullet != null)
-            bullet.SetDirection(direction);
+            : Object.Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
     }
 
-    public void SetFacing(bool facingRight)
-    {
-        _facingRight = facingRight;
-    }
-
-    private float GetFacingDirection()
-    {
-        return _facingRight ? 1f : -1f;
-    }
+    private float FacingDir() => _facingRight ? 1f : -1f;
 }
